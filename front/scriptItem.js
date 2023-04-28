@@ -130,8 +130,42 @@ const addSubject = async (studentId, subject) => {
 
 // addSubject(studentId, subject);
 //  
+
+// # 3 PUT update a task's status
+const updateTaskStatus = async (studentId, taskName, newStatus) => {
+    try {
+        const response = await fetch(`/api/students/${studentId}/tasks/update-status`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ task_name: taskName, status: newStatus }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Error updating task status');
+        }
+
+        const data = await response.json();
+        console.log(data.message); // Assuming the response contains a 'message' property
+
+        // Perform any additional actions upon successful task status update
+
+    } catch (error) {
+        console.error(error);
+        // Handle error scenario
+    }
+};
+
+// Example usage
+// const studentId = "6430204221";
+// const taskName = "backend coding";
+// const newStatus = "completed";
+
+// updateTaskStatus(studentId, taskName, newStatus);
+
 //-------------------------------------------------------------------
-// # 3. DELETE 
+// # 4. DELETE 
 
 const deleteItem = async (item) => {
     const options = {

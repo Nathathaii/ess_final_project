@@ -181,8 +181,38 @@ exports.addSubject = async (req, res) => {
     }
 };
 
+//#3 update a task's status
+exports.updateTaskStatus = async (req, res) => {
+    const { student_id } = req.params;
+    const { task_name, status } = req.body;
+    try {
+        const student = database.find((student) => student.student_id === student_id);
 
-// #3 Delete an item from student_id's tasks list 
+        if (!student) {
+            res.status(404).send("Student not found");
+            return;
+        }
+
+        const task = student.tasks.find((task) => task.task_name === task_name);
+
+        if (!task) {
+            res.status(404).send("Task not found");
+            return;
+        }
+
+        task.status = status;
+
+        res.json({ message: "Task status updated successfully!" });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server error");
+    }
+};
+
+
+
+// #4 Delete an item from student_id's tasks list 
 exports.deleteTask = async (req, res) => {
     const { student_id, task_name } = req.params;
 
