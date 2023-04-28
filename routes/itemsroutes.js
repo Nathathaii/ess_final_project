@@ -8,7 +8,7 @@ router.get("/:student_id", itemsController.getStudentInfo);
 router.get("/:student_id/tasks", itemsController.getStudentTasks);
 router.get("/:student_id/subjects", itemsController.getStudentSubjects);
 
-router.post("/:student_id", itemsController.addTask);
+router.post("/:student_id/tasks", itemsController.addTask);
 router.post("/:student_id/subjects", itemsController.addSubject);
 
 router.delete("/:student_id/tasks/:item_name", itemsController.deleteTask);
