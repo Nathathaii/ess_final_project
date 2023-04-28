@@ -2,13 +2,15 @@ require('dotenv').config();
 const backendIPAddress = process.env.backendIPAddress
 
 let itemData;
+// # 1.GET
 
+//# 1.1 get all data save in a specific student_id
 const getItemsFromDB = async () => {
     const options = {
         method: "GET",
         credentials: "include",
     };
-    let studentId = '6430204221';
+    let studentId = '6430204221'; //should change this student_id for different output
     await fetch(`http://${backendIPAddress}/items/${studentId}`, options)
         .then((response) => response.json())
         .then((data) => {
@@ -24,8 +26,40 @@ const showItemsInTable = async (itemData) => {
 
 }
 
-//add event by user
-const addEvent = async () => {
+//#1.2 display only "tasks list" of a specific student
+const getStudentTasks = async () => {
+    const options = {
+        method: "GET",
+        credentials: "include",
+    };
+    let studentId = '6430204221'; //should change this student_id for different output
+    await fetch(`http://${backendIPAddress}/items/${studentId}/tasks`, options)
+        .then((response) => response.json())
+        .then((data) => {
+            itemData = data;
+        })
+        .catch((error) => console.error(error));
+};
+
+//#1.3 display only "subjects list" of a specific student
+const getStudentSubjects = async () => {
+    const options = {
+        method: "GET",
+        credentials: "include",
+    };
+    let studentId = '6430204221'; //should change this student_id for different output
+    await fetch(`http://${backendIPAddress}/items/${studentId}/subjects`, options)
+        .then((response) => response.json())
+        .then((data) => {
+            itemData = data;
+        })
+        .catch((error) => console.error(error));
+};
+//------------------------------------------------------------------
+//# 2. POST
+
+//# 2.1  add task to a specific student's tasks list
+const addTask = async () => {
     //const name = document.getElementById("") //event name
     //const date = document.getElementById("")
     //const description = document.getElementById("")
@@ -55,9 +89,49 @@ const addEvent = async () => {
         credentials: "include",
     };
     let studentId = '6430204221';
-    await fetch(`http://${backendIPAddress}/items${studentId} `, options)
+    await fetch(`http://${backendIPAddress}/items/${studentId} `, options)
         .catch((error) => console.error(error))
 };
+
+// # 2.2 add subjects
+const addSubject = async (studentId, subject) => {
+    try {
+        const response = await fetch(`http://${backendIPAddress}/items/${studentId}/subjects`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(subject),
+        });
+
+        if (!response.ok) {
+            throw new Error('Error adding subject');
+        }
+
+        const data = await response.json();
+        console.log(data.message); // Assuming the response contains a 'message' property
+
+        // Perform any additional actions upon successful subject addition
+
+    } catch (error) {
+        console.error(error);
+        // Handle error scenario
+    }
+};
+
+// Example usage (if you want to test uncomment the code below)
+
+// const studentId = "6430204221";
+// const subject = {
+//     subject_id: "0003",
+//     subject_name: "math",
+//     subject_color: "#FFD700",
+// };
+
+// addSubject(studentId, subject);
+//  
+//-------------------------------------------------------------------
+// # 3. DELETE 
 
 const deleteItem = async (item) => {
     const options = {

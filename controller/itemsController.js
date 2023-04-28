@@ -66,6 +66,49 @@ exports.getStudentInfo = async (req, res) => {
     }
 };
 
+//#1.2 display only "tasks list" of a specific student
+exports.getStudentTasks = async (req, res) => {
+    const { student_id } = req.params;
+    try {
+        const data = await getItems({
+            TableName: process.env.AWS_TABLE_NAME,
+            Key: {
+                student_id: { S: student_id }
+            }
+        });
+        if (!data.Item) {
+            res.status(404).send("Student not found");
+            return;
+        }
+        const tasks = data.Item.tasks.L.map((task) => task.M);
+        res.json(tasks);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server error");
+    }
+};
+//#1.3 display only "subjects list" of a specific student
+exports.getStudentSubjects = async (req, res) => {
+    const { student_id } = req.params;
+    try {
+        const data = await getItems({
+            TableName: process.env.AWS_TABLE_NAME,
+            Key: {
+                student_id: { S: student_id }
+            }
+        });
+        if (!data.Item) {
+            res.status(404).send("Student not found");
+            return;
+        }
+        const subjects = data.Item.subjects.L.map((subject) => subject.M);
+        res.json(subjects);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server error");
+    }
+};
+
 // #2 Add a task to student_id's tasks list
 exports.addTask = async (req, res) => {
     const { student_id } = req.params;
@@ -103,6 +146,41 @@ exports.addTask = async (req, res) => {
         res.status(500).json({ message: "Error adding task to database" });
     }
 };
+
+//#2.2 add subjects
+exports.addSubject = async (req, res) => {
+    const { student_id } = req.params;
+    const { subject_id, subject_name, subject_color } = req.body;
+
+    const params = {
+        TableName: process.env.AWS_TABLE_NAME,
+        Item: {
+            student_id: { S: student_id },
+            subjects: {
+                L: [
+                    {
+                        M: {
+                            subject_id: { S: subject_id },
+                            subject_name: { S: subject_name },
+                            subject_color: { S: subject_color },
+                        },
+                    },
+                ],
+            },
+        },
+    };
+
+    const command = new PutItemCommand(params);
+
+    try {
+        const data = await client.send(command);
+        res.status(200).json({ message: "Subject added successfully!" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Error adding subject to database" });
+    }
+};
+
 
 // #3 Delete an item from student_id's tasks list 
 exports.deleteTask = async (req, res) => {
