@@ -134,7 +134,7 @@ const addSubject = async (studentId, subject) => {
 // # 3 PUT update a task's status
 const updateTaskStatus = async (studentId, taskName, newStatus) => {
     try {
-        const response = await fetch(`/api/students/${studentId}/tasks/update-status`, {
+        const response = await fetch(`http://${backendIPAddress}/items/${studentId}/tasks`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
