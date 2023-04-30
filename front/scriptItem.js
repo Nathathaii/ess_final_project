@@ -185,3 +185,34 @@ const deleteItem = async (item) => {
 await getItemsFromDB();
 showItemsInTable(itemData);
 deleteItem();
+
+//------------------------------------- MCV ----------------------------------------------------
+const authorizeApplication = () => {
+    window.location.href = `http://${backendIPAddress}/courseville/auth_app`;
+};
+
+const getUserProfile = async () => {
+    const options = {
+        method: "GET",
+        credentials: "include",
+    };
+    await fetch(
+        `http://${backendIPAddress}/courseville/get_profile_info`,
+        options
+    )
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data.user);
+            var id = data.user.id;
+            var firstname = data.user.firstname_en;
+            var lastname = data.user.lastname_en;
+            return [id, firstname, lastname]; //หรือจะเอา return ออกแล้วแสดง profile ในนี้เลยก้ได้
+        })
+        .catch((error) => console.error(error));
+};
+
+document.addEventListener("DOMContentLoaded", async function (event) {
+    console.log("Showing items from database.");
+    await getItemsFromDB();
+    showItemsInTable(itemData);
+})

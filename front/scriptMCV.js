@@ -33,13 +33,13 @@ const getUserProfile = async () => {
         .catch((error) => console.error(error));
 };
 
-// TODO #3.3: Send Get Courses ("GET") request to backend server and filter the response to get Comp Eng Ess CV_cid
-//            and display the result on the webpage
+////TODO #3.3: Send Get Courses ("GET") request to backend server and filter the response to get Comp Eng Ess CV_cid
+////         and display the result on the webpage
 // const getCompEngEssCid = async () => {
-//   document.getElementById("ces-cid-value").innerHTML = "";
-//   console.log(
-//     "This function should fetch 'get courses' route from backend server and find cv_cid value of Comp Eng Ess."
-//   );
+//     document.getElementById("ces-cid-value").innerHTML = "";
+//     console.log(
+//         "This function should fetch 'get courses' route from backend server and find cv_cid value of Comp Eng Ess."
+//     );
 // };
 
 // TODO #3.5: Send Get Course Assignments ("GET") request with cv_cid to backend server
