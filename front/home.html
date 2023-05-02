@@ -16,6 +16,7 @@
     <p class="id" id="id"></p>
     <p class="name"><span id="username"></span></p>
     <button class="logout" onclick="logout()">logout</button>
+    <button onclick="deleteAllBadges()">delete</button>
   </div>
 
   <div>
@@ -36,201 +37,192 @@
       </th>
     </table>
     <table>
-      <th><p class="event-type-text">Type</p></th>
-      <th>
-        <select class="event-type-input">
-          <option>Multiple Choice</option>
-          <option>Fill in the blank</option>
-        </select>
-      </th>
-    </table>
-    <table>
       <th><p class="event-date-text">Due date :</p></th>
       <th>
-        <select class="event-date-date">
-          <option>01</option>
-          <option>02</option>
-          <option>03</option>
-          <option>04</option>
-          <option>05</option>
-          <option>06</option>
-          <option>07</option>
-          <option>08</option>
-          <option>09</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-          <option>13</option>
-          <option>14</option>
-          <option>15</option>
-          <option>16</option>
-          <option>17</option>
-          <option>18</option>
-          <option>19</option>
-          <option>20</option>
-          <option>21</option>
-          <option>22</option>
-          <option>23</option>
-          <option>24</option>
-          <option>25</option>
-          <option>26</option>
-          <option>27</option>
-          <option>28</option>
-          <option>29</option>
-          <option>30</option>
-          <option>31</option>
+        <select class="event-date-date" id="date1">
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
         </select>
       </th>
       <th>
         <select class="event-date-month">
-          <option>JAN</option>
-          <option>FEB</option>
-          <option>MAR</option>
-          <option>APR</option>
-          <option>MAY</option>
-          <option>JUN</option>
-          <option>JUL</option>
-          <option>AUG</option>
-          <option>SEP</option>
-          <option>OCT</option>
-          <option>NOV</option>
-          <option>DEC</option>
+          <option value="01">JAN</option>
+          <option value="02">FEB</option>
+          <option value="03">MAR</option>
+          <option value="01">APR</option>
+          <option value="01">MAY</option>
+          <option value="01">JUN</option>
+          <option value="01">JUL</option>
+          <option value="01">AUG</option>
+          <option value="01">SEP</option>
+          <option value="01">OCT</option>
+          <option value="01">NOV</option>
+          <option value="01">DEC</option>
         </select>
       </th>
       <th>
         <select class="event-date-year">
-          <option>2023</option>
+          <option value="01">2023</option>
         </select>
       </th>
     </table>
     <table>
       <th><p class="event-time-text">Deadline :</p></th>
       <th>
-        <select class="event-time-hour">
-          <option>00</option>
-          <option>01</option>
-          <option>02</option>
-          <option>03</option>
-          <option>04</option>
-          <option>05</option>
-          <option>06</option>
-          <option>07</option>
-          <option>08</option>
-          <option>09</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-          <option>13</option>
-          <option>14</option>
-          <option>15</option>
-          <option>16</option>
-          <option>17</option>
-          <option>18</option>
-          <option>19</option>
-          <option>20</option>
-          <option>21</option>
-          <option>22</option>
-          <option>23</option>
-          <option>24</option>
-          <option>25</option>
-          <option>26</option>
-          <option>27</option>
-          <option>28</option>
-          <option>29</option>
-          <option>30</option>
-          <option>31</option>
-          <option>32</option>
-          <option>33</option>
-          <option>34</option>
-          <option>35</option>
-          <option>36</option>
-          <option>37</option>
-          <option>38</option>
-          <option>39</option>
-          <option>40</option>
-          <option>41</option>
-          <option>42</option>
-          <option>43</option>
-          <option>44</option>
-          <option>45</option>
-          <option>46</option>
-          <option>47</option>
-          <option>48</option>
-          <option>49</option>
-          <option>50</option>
-          <option>51</option>
-          <option>52</option>
-          <option>53</option>
-          <option>54</option>
-          <option>55</option>
-          <option>56</option>
-          <option>57</option>
-          <option>58</option>
-          <option>59</option>
+        <select class="event-time-hour" id="hour1">
+          <option value="00">00</option>
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45">45</option>
+          <option value="46">46</option>
+          <option value="47">47</option>
+          <option value="48">48</option>
+          <option value="49">49</option>
+          <option value="50">50</option>
+          <option value="51">51</option>
+          <option value="52">52</option>
+          <option value="53">53</option>
+          <option value="54">54</option>
+          <option value="55">55</option>
+          <option value="56">56</option>
+          <option value="57">57</option>
+          <option value="58">58</option>
+          <option value="59">59</option>
         </select>
       </th>
       <th>
-        <select class="event-time-minute">
-          <option>00</option>
-          <option>01</option>
-          <option>02</option>
-          <option>03</option>
-          <option>04</option>
-          <option>05</option>
-          <option>06</option>
-          <option>07</option>
-          <option>08</option>
-          <option>09</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-          <option>13</option>
-          <option>14</option>
-          <option>15</option>
-          <option>16</option>
-          <option>17</option>
-          <option>18</option>
-          <option>19</option>
-          <option>20</option>
-          <option>21</option>
-          <option>22</option>
-          <option>23</option>
-          <option>24</option>
-          <option>25</option>
-          <option>26</option>
-          <option>27</option>
-          <option>28</option>
-          <option>29</option>
-          <option>30</option>
-          <option>31</option>
-          <option>32</option>
-          <option>33</option>
-          <option>34</option>
-          <option>35</option>
-          <option>36</option>
-          <option>37</option>
-          <option>38</option>
-          <option>39</option>
-          <option>40</option>
-          <option>41</option>
-          <option>42</option>
-          <option>43</option>
-          <option>44</option>
-          <option>45</option>
-          <option>46</option>
-          <option>47</option>
-          <option>48</option>
-          <option>49</option>
-          <option>50</option>
-          <option>51</option>
-          <option>52</option>
-          <option>53</option>
-          <option>54</option>
-          <option>55</option>
-          <option>56</option>
-          <option>57</option>
-          <option>58</option>
-          <option>59</option>
+        <select class="event-time-minute" id="min1">
+          <option value="00">00</option>
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45">45</option>
+          <option value="46">46</option>
+          <option value="47">47</option>
+          <option value="48">48</option>
+          <option value="49">49</option>
+          <option value="50">50</option>
+          <option value="51">51</option>
+          <option value="52">52</option>
+          <option value="53">53</option>
+          <option value="54">54</option>
+          <option value="55">55</option>
+          <option value="56">56</option>
+          <option value="57">57</option>
+          <option value="58">58</option>
+          <option value="59">59</option>
         </select>
       </th>
     </table>
@@ -242,144 +234,25 @@
   <div class="badgeevent" id="badge-all">
     <button onclick="badge_close()" class="badge-close">Close</button>
     <table>
-      <th><p class="badge-name-text">Subject</p></th>
-      <th>
-        <form>
-          <input class="badge-name-input" type="text" />
-        </form>
-      </th>
+      <th><p class="badge-name-text">Event -></p></th>
+      <th><p class="badge-name-text" id="badgeEvent">Com Ess Eng</p></th>
     </table>
     <table>
-      <th><p class="badge-deadline-text">Deadline :</p></th>
-      <th>
-        <select class="badge-deadline-hours">
-          <option>00</option>
-          <option>01</option>
-          <option>02</option>
-          <option>03</option>
-          <option>04</option>
-          <option>05</option>
-          <option>06</option>
-          <option>07</option>
-          <option>08</option>
-          <option>09</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-          <option>13</option>
-          <option>14</option>
-          <option>15</option>
-          <option>16</option>
-          <option>17</option>
-          <option>18</option>
-          <option>19</option>
-          <option>20</option>
-          <option>21</option>
-          <option>22</option>
-          <option>23</option>
-        </select>
-      </th>
-      <th>
-        <select class="badge-deadline-minutes">
-          <option>00</option>
-          <option>01</option>
-          <option>02</option>
-          <option>03</option>
-          <option>04</option>
-          <option>05</option>
-          <option>06</option>
-          <option>07</option>
-          <option>08</option>
-          <option>09</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-          <option>13</option>
-          <option>14</option>
-          <option>15</option>
-          <option>16</option>
-          <option>17</option>
-          <option>18</option>
-          <option>19</option>
-          <option>20</option>
-          <option>21</option>
-          <option>22</option>
-          <option>23</option>
-          <option>24</option>
-          <option>25</option>
-          <option>26</option>
-          <option>27</option>
-          <option>28</option>
-          <option>29</option>
-          <option>30</option>
-          <option>31</option>
-          <option>32</option>
-          <option>33</option>
-          <option>34</option>
-          <option>35</option>
-          <option>36</option>
-          <option>37</option>
-          <option>38</option>
-          <option>39</option>
-          <option>40</option>
-          <option>41</option>
-          <option>42</option>
-          <option>43</option>
-          <option>44</option>
-          <option>45</option>
-          <option>46</option>
-          <option>47</option>
-          <option>48</option>
-          <option>49</option>
-          <option>50</option>
-          <option>51</option>
-          <option>52</option>
-          <option>53</option>
-          <option>54</option>
-          <option>55</option>
-          <option>56</option>
-          <option>57</option>
-          <option>58</option>
-          <option>59</option>
-        </select>
-      </th>
+      <th><p class="badge-name-text">CourseID -></p></th>
+      <th><p class="badge-name-text" id="badgeCourseID">2110221</p></th>
     </table>
     <table>
-      <th><p class="badge-Status-text">Status</p></th>
-      <th>
-        <select class="subject">
-          <option>Select-Status</option>
-          <option>Almost Done</option>
-          <option>Done</option>
-          <option>Not Started</option>
-        </select>
-      </th>
+      <th><p class="badge-deadline-text">Deadline -></p></th>
+      <th><p class="badge-deadline-text" id="badgeDeadline">23:59</p></th>
     </table>
     <table>
-      <th><p class="badge-comment-text">Comment</p></th>
-      <th>
-        <form>
-          <textarea rows="5" class="badge-comment-input"></textarea>
-        </form>
-      </th>
+      <th><p class="badge-Status-text">Status -></p></th>
+      <th><p class="badge-status-text" id="badgestatus">done</p></th>
     </table>
     <table>
-      <th><p class="badge-description-text">Description</p></th>
-      <th>
-        <form>
-          <textarea rows="5" class="badge-description-input"></textarea>
-        </form>
-      </th>
+      <th><p class="badge-description-text">Description -></p></th>
+      <th><p class="badge-description-text" id="badgeDescription">-</p></th>
     </table>
-    <table>
-      <th><p class="badge-url-text">URL</p></th>
-      <th>
-        <form>
-          <input class="badge-description-input" type="text" />
-        </form>
-      </th>
-    </table>
-    <button onclick="badge_close()" class="badge-enter">Enter</button>
   </div>
 
   <p class="mycourseview">MyCourseView</p>
@@ -450,56 +323,56 @@
           </thead>
           <tbody>
             <tr>
-              <td class="day"></td>
               <td class="day">
                 <div class="top">
-                  <span class="number">1</span>
-                </div>
-                <div class="badge" onclick="badge_open()">
-                  <span class="badge-name">Meating</span>
-                  <span class="badge-time">23:59</span>
+                  <span class="number">00</span>
                 </div>
               </td>
               <td class="day">
                 <div class="top">
-                  <span class="number">2</span>
+                  <span class="number">01</span>
                 </div>
               </td>
               <td class="day">
                 <div class="top">
-                  <span class="number">3</span>
+                  <span class="number">02</span>
                 </div>
               </td>
               <td class="day">
                 <div class="top">
-                  <span class="number">4</span>
+                  <span class="number">03</span>
                 </div>
               </td>
               <td class="day">
                 <div class="top">
-                  <span class="number">5</span>
+                  <span class="number">04</span>
                 </div>
               </td>
               <td class="day">
                 <div class="top">
-                  <span class="number">6</span>
+                  <span class="number">05</span>
+                </div>
+              </td>
+              <td class="day">
+                <div class="top">
+                  <span class="number">06</span>
                 </div>
               </td>
             </tr>
             <tr>
               <td class="day">
                 <div class="top">
-                  <span class="number">7</span>
+                  <span class="number">07</span>
                 </div>
               </td>
               <td class="day">
                 <div class="top">
-                  <span class="number">8</span>
+                  <span class="number">08</span>
                 </div>
               </td>
               <td class="day">
                 <div class="top">
-                  <span class="number">9</span>
+                  <span class="number">09</span>
                 </div>
               </td>
               <td class="day">

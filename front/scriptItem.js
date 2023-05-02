@@ -8,8 +8,16 @@ var userTaskFromDB;
 var userTaskFromCV;
 var foundUserTaskFromDB;
 var id;
-// # 1.GET
 
+// clear tasks
+function deleteAllBadges() {
+    var badgeElements = document.querySelectorAll(".badge");
+    badgeElements.forEach(function (badgeElement) {
+        badgeElement.remove();
+    });
+}
+
+// # 1.GET
 const authorizeApplication = () => {
     window.location.href = `http://${backendIPAddress}/courseville/auth_app`;
 };
@@ -20,7 +28,7 @@ const getItemsFromDB = async () => {
         method: "GET",
         credentials: "include",
     };
-    let studentId = "6430204221"; //should change this student_id for different output
+    let studentId = id; //should change this student_id for different output
     await fetch(`http://${backendIPAddress}/items/${studentId}`, options)
         .then((response) => response.json())
         .then((data) => {
@@ -48,22 +56,28 @@ const showItemsInTable = async (itemData) => {
 
         //เขียนโค้ดฝั่ง front แสดงข้อมูล assignment ลง calendar ได้เลย (อาจใช้แค่ task name กับ duedate)
 
-        for (let j = 0; j < days.length; j++) {
-            //const dayNumber = parseInt(days[j].getElementsByClassName("number")[0].innerHTML);
-            const dayNumber = days[j].getElementsByClassName("number")[0].textContent;
-            if (dayNumber === duedate.slice(-2)) {
-                //??
-                // create a new badge element with the task information
-                const badge = document.createElement("div");
-                badge.classList.add("badge");
-                badge.onclick = function () {
-                    badge_open();
-                };
-                badge.innerHTML = `
-                  <span class="badge-name">${task_name}</span>
-                  <span class="badge-time">${deadline}</span>`;
-                days[j].appendChild(badge);
-                break;
+        for (let i = 0; i < tasks.length; i++) {
+            var duedate = tasks[i].duedate;
+            var task_name = tasks[i].task_name;
+            var deadline = tasks[i].deadline;
+            for (let j = 0; j < days.length; j++) {
+                //const dayNumber = parseInt(days[j].getElementsByClassName("number")[0].innerHTML);
+
+                const dayNumber = days[j].getElementsByClassName("number")[0].textContent;
+                if (dayNumber === duedate.slice(-2)) {
+                    //??
+                    // create a new badge element with the task information
+                    const badge = document.createElement("div");
+                    badge.classList.add("badge");
+                    badge.onclick = function () {
+                        badge_open();
+                    };
+                    badge.innerHTML = `
+                          <span class="badge-name">${task_name}</span>
+                          <span class="badge-time">${deadline}</span>`;
+                    days[j].appendChild(badge);
+                    break;
+                }
             }
         }
     }
@@ -103,35 +117,20 @@ const getStudentSubjects = async () => {
 
 //# 2.1  add task to a specific student's tasks list
 const addTask = async () => {
-    //const name = document.getElementById("") //event name
-    //const date = document.getElementById("")
-    //const description = document.getElementById("")
-    const student_id = id;
-    studentId = id;
-    console.log("aaa");
-    // const task_name = document.getElementById("event-name-input").value;
-    // const description = document.getElementsByClassName(
-    //   "event-description-input"
-    // ).value;
-    // const subject_id =
-    //   document.getElementsByClassName("event-course-input").value;
-    // const priority = document.getElementsByClassName("event-type-input").value;
-    // const duedate = [
-    //   document.getElementsByClassName("event-date-date").value,
-    //   document.getElementsByClassName("event-date-month").value,
-    //   document.getElementsByClassName("event-date-year").value,
-    // ];
-    // const deadline = [
-    //   document.getElementsByClassName("event-time-hour").value,
-    //   document.getElementsByClassName("event-time-minute").value,
-    // ];
-    // const status = "todo";
-    const task_name = "name";
-    const description = "descrubtion";
-    const subject_id = "subject";
-    const priority = "priority";
-    const duedate = "date";
-    const deadline = "time";
+
+    const task_name = document.getElementById("event-name-input").value;
+    const description = document.getElementsByClassName(
+        "event-description-input"
+    ).value;
+    const subject_id =
+        document.getElementsByClassName("event-course-input").value;
+    const priority = document.getElementsByClassName("event-type-input").value;
+    const duedate = "2023-05-" + document.getElementById("date1").value;
+    const deadline =
+        document.getElementById("hour1").value +
+        ":" +
+        document.getElementById("min1").value;
+    console.log(deadline);
     const status = "todo";
 
     const options = {
