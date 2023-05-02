@@ -33,29 +33,29 @@ const getUserProfile = async () => {
         .catch((error) => console.error(error));
 };
 
-////TODO #3.3: Send Get Courses ("GET") request to backend server and filter the response to get Comp Eng Ess CV_cid
-////         and display the result on the webpage
-// const getCompEngEssCid = async () => {
-//     document.getElementById("ces-cid-value").innerHTML = "";
-//     console.log(
-//         "This function should fetch 'get courses' route from backend server and find cv_cid value of Comp Eng Ess."
-//     );
-// };
+//TODO #3.3: Send Get Courses ("GET") request to backend server and filter the response to get Comp Eng Ess CV_cid
+//         and display the result on the webpage
+const getCompEngEssCid = async () => {
+    document.getElementById("ces-cid-value").innerHTML = "";
+    console.log(
+        "This function should fetch 'get courses' route from backend server and find cv_cid value of Comp Eng Ess."
+    );
+};
 
-// TODO #3.5: Send Get Course Assignments ("GET") request with cv_cid to backend server
-//            and create Comp Eng Ess assignments table based on the response (itemid, title)
-// const createCompEngEssAssignmentTable = async () => {
-//   const table_body = document.getElementById("main-table-body");
-//   table_body.innerHTML = "";
-//   const cv_cid = document.getElementById("ces-cid-value").innerHTML;
+//TODO #3.5: Send Get Course Assignments ("GET") request with cv_cid to backend server
+//          and create Comp Eng Ess assignments table based on the response (itemid, title)
+const createCompEngEssAssignmentTable = async () => {
+    const table_body = document.getElementById("main-table-body");
+    table_body.innerHTML = "";
+    const cv_cid = document.getElementById("ces-cid-value").innerHTML;
 
-//   console.log(
-//     "This function should fetch 'get course assignments' route from backend server and show assignments in the table."
-//   );
-// };
+    console.log(
+        "This function should fetch 'get course assignments' route from backend server and show assignments in the table."
+    );
+};
 
-// const logout = async () => {
-//   window.location.href = `http://${backendIPAddress}/courseville/logout`;
-// };
+const logout = async () => {
+    window.location.href = `http://${backendIPAddress}/courseville/logout`;
+};
 
-// document.getElementById("group-id").innerHTML = getGroupNumber();
+document.getElementById("group-id").innerHTML = getGroupNumber();

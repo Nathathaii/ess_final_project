@@ -230,3 +230,40 @@ document.addEventListener("DOMContentLoaded", async function (event) {
     await getItemsFromDB();
     showItemsInTable(itemData);
 })
+//---------------------------------------------------------------
+
+const onLoad = async () => {
+    await getUserProfile();
+    console.log(user);
+    document.getElementById(
+        "username"
+    ).innerHTML = `${user.firstname_en} ${user.lastname_en}`;
+    document.getElementById("id").innerHTML = `${user.id}`;
+};
+
+onLoad();
+
+const logout = async () => {
+    window.location.href = `http://${backendIPAddress}/courseville/logout`;
+};
+
+function calendar_open() {
+    document.getElementById("body2").style.display = "block";
+}
+
+function event_open() {
+    document.getElementById("event-all").style.display = "block";
+}
+
+function event_close() {
+    console.log("close event");
+    document.getElementById("event-all").style.display = "none";
+}
+
+function badge_open() {
+    document.getElementById("badge-all").style.display = "block";
+}
+
+function badge_close() {
+    document.getElementById("badge-all").style.display = "none";
+}
