@@ -23,6 +23,20 @@ const getItemsFromDB = async () => {
 const showItemsInTable = async (itemData) => {
     const table = document.getElementById("") //fill main table body
     table.innerHTML = "";
+    const tasks = itemData.tasks;
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i].task_name;
+        var deadline = task.deadline;
+        var description = task.description;
+        var duedate = task.duedate;
+        var priority = task.priority;
+        var status = task.status;
+        var subject_id = task.subject_id;
+        var task_name = task.task_name
+
+        //เขียนโค้ดฝั่ง front แสดงข้อมูล assignment ลง calendar ได้เลย (อาจใช้แค่ task name กับ duedate)
+
+    }
 
 }
 
