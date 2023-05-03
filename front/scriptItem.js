@@ -38,11 +38,17 @@ const getItemsFromDB = async () => {
 };
 
 //show data from calendar
-const showItemsInTable = async (itemData) => {
+const showItemsInTable = async () => {
+    const itemData = await getStudentTasks();
     const table = document.getElementById("myTable"); //fill main table body
     //table.innerHTML = "";
     const days = table.getElementsByClassName("day");
-    let sid = "6430204221";
+    if (itemData) {
+        // Perform operations with the data
+        console.log(itemData);
+        // ... Rest of the code
+    }
+
     const tasks = itemData.tasks;
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i].task_name;
