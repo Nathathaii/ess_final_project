@@ -120,7 +120,6 @@ const showItemsInTable = async () => {
     }
 };
 
-showItemsInTable();
 
 //------------------------------------------------------------------
 //# 2. POST
@@ -295,6 +294,7 @@ const onLoad = async () => {
 };
 
 onLoad();
+showItemsInTable();
 
 const logout = async () => {
     window.location.href = `http://${backendIPAddress}/courseville/logout`;
