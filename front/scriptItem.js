@@ -84,41 +84,31 @@ const showItemsInTable = async () => {
 
     const tasks = itemData;
     console.log(tasks, tasks.length)
+
+    //เขียนโค้ดฝั่ง front แสดงข้อมูล assignment ลง calendar ได้เลย (อาจใช้แค่ task name กับ duedate)
+
     for (let i = 0; i < tasks.length; i++) {
-        const task = tasks[i].task_name;
-        var deadline = task.deadline;
-        var description = task.description;
-        var duedate = task.duedate;
-        var priority = task.priority;
-        var status = task.status;
-        var subject_id = task.subject_id;
-        var task_name = task.task_name;
+        var duedate = tasks[i].duedate['S'];
+        var task_name = tasks[i].task_name['S'];
+        var deadline = tasks[i].deadline['S'];
+        for (let j = 0; j < days.length; j++) {
+            //const dayNumber = parseInt(days[j].getElementsByClassName("number")[0].innerHTML);
 
-        //เขียนโค้ดฝั่ง front แสดงข้อมูล assignment ลง calendar ได้เลย (อาจใช้แค่ task name กับ duedate)
-
-        for (let i = 0; i < tasks.length; i++) {
-            var duedate = tasks[i].duedate['S'];
-            var task_name = tasks[i].task_name['S'];
-            var deadline = tasks[i].deadline['S'];
-            for (let j = 0; j < days.length; j++) {
-                //const dayNumber = parseInt(days[j].getElementsByClassName("number")[0].innerHTML);
-
-                const dayNumber = days[j].getElementsByClassName("number")[0].textContent;
-                console.log(duedate)
-                if (dayNumber === duedate.slice(-2)) {
-                    //??
-                    // create a new badge element with the task information
-                    const badge = document.createElement("div");
-                    badge.classList.add("badge");
-                    badge.onclick = function () {
-                        badge_open();
-                    };
-                    badge.innerHTML = `
-                          <span class="badge-name">${task_name}</span>
-                          <span class="badge-time">${deadline}</span>`;
-                    days[j].appendChild(badge);
-                    break;
-                }
+            const dayNumber = days[j].getElementsByClassName("number")[0].textContent;
+            console.log(duedate)
+            if (dayNumber === duedate.slice(-2)) {
+                //??
+                // create a new badge element with the task information
+                const badge = document.createElement("div");
+                badge.classList.add("badge");
+                badge.onclick = function () {
+                    badge_open();
+                };
+                badge.innerHTML = `
+                        <span class="badge-name">${task_name}</span>
+                        <span class="badge-time">${deadline}</span>`;
+                days[j].appendChild(badge);
+                break;
             }
         }
     }
