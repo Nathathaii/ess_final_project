@@ -73,6 +73,7 @@ exports.accessToken = (req, res) => {
 
 // Example: Send "GET" request to CV endpoint to get user profile information
 exports.getProfileInformation = (req, res) => {
+    console.log("heeelo");
     try {
         const profileOptions = {
             headers: {
@@ -80,7 +81,7 @@ exports.getProfileInformation = (req, res) => {
             },
         };
         const profileReq = https.request(
-            "https://www.mycourseville.com/api/v1/public/users/info",
+            "https://www.mycourseville.com/api/v1/public/get/user/info",
             profileOptions,
             (profileRes) => {
                 let profileData = "";
@@ -89,6 +90,7 @@ exports.getProfileInformation = (req, res) => {
                 });
                 profileRes.on("end", () => {
                     const profile = JSON.parse(profileData);
+                    console.log(profile);
                     res.send(profile);
                     res.end();
                 });
