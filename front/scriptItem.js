@@ -47,6 +47,7 @@ const getStudentTasks = async () => {
     await fetch(`http://${backendIPAddress}/items/${studentId}/tasks`, options)
         .then((response) => response.json())
         .then((data) => {
+            console.log(data);
             itemData = data;
         })
         .catch((error) => console.error(error));
