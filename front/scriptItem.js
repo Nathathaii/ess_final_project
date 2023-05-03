@@ -49,7 +49,7 @@ const showItemsInTable = async () => {
         // ... Rest of the code
     }
 
-    const tasks = itemData.tasks;
+    const tasks = itemData;
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i].task_name;
         var deadline = task.deadline;
