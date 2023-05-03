@@ -134,19 +134,21 @@ const addTask = async () => {
     const task_name = document.getElementById("event-name-input").value;
     const description = document.getElementsByClassName(
         "event-description-input"
-    ).value;
+    )[0].value;
     const subject_id =
-        document.getElementsByClassName("event-course-input").value;
-    const priority = document.getElementsByClassName("event-type-input").value;
+        document.getElementsByClassName("event-course-input")[0].value;
     const duedate = "2023-05-" + document.getElementById("date1").value;
     const deadline =
         document.getElementById("hour1").value +
         ":" +
         document.getElementById("min1").value;
-    console.log(deadline);
+
     const status = "todo";
+    console.log(deadline, "5555");
 
-
+    console.log(document.getElementsByClassName(
+        "event-description-input"
+    ), description);
     const options = {
         method: "POST",
         headers: {
@@ -157,7 +159,6 @@ const addTask = async () => {
             task_name: task_name,
             description: description,
             subject_id: subject_id,
-            priority: priority,
             duedate: duedate,
             deadline: deadline,
             status: status,
@@ -170,6 +171,10 @@ const addTask = async () => {
     ).catch((error) => console.error(error));
     console.log("jjjjjjj");
     console.log(data);
+
+    deleteAllBadges();
+    showItemsInTable();
+
 };
 
 // # 2.2 add subjects
