@@ -89,6 +89,8 @@ const showItemsInTable = async () => {
     }
 };
 
+showItemsInTable();
+
 //#1.2 display only "tasks list" of a specific student
 const getStudentTasks = async () => {
     const options = {
@@ -145,7 +147,7 @@ const addTask = async () => {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            student_id: student_id,
+            student_id: id,
             task_name: task_name,
             description: description,
             subject_id: subject_id,
