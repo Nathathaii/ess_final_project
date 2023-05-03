@@ -129,6 +129,6 @@ exports.getAssignmentDetail = (req, res) => {
 
 exports.logout = (req, res) => {
     req.session.destroy();
-    res.redirect(`http://${process.env.frontendIPAddress}/front/login.html`);
+    res.redirect(`https://www.mycourseville.com/api/logout`);
     res.end();
 };
