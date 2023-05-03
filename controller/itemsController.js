@@ -117,21 +117,32 @@ exports.addTask = async (req, res) => {
     const { student_id } = req.params;
     const { task_name, description, subject_id, duedate, deadline, status } = req.body;
 
+    const data = await getItems({
+        TableName: process.env.AWS_TABLE_NAME,
+        Key: {
+            student_id: { S: student_id }
+        }
+    });
+
+    const newTasks = data.Item?.tasks?.L || [];
+
+    newTasks.push({
+        M: {
+            task_name: { S: task_name },
+            description: { S: description },
+            subject_id: { S: subject_id },
+            duedate: { S: duedate },
+            deadline: { S: deadline },
+            status: { S: status },
+        }
+    });
+
     const params = {
         TableName: process.env.AWS_TABLE_NAME,
         Item: {
             student_id: { S: student_id },
             tasks: {
-                L: [{
-                    M: {
-                        task_name: { S: task_name },
-                        description: { S: description },
-                        subject_id: { S: subject_id },
-                        duedate: { S: duedate },
-                        deadline: { S: deadline },
-                        status: { S: status },
-                    }
-                }],
+                L: newTasks,
             },
         },
     };
