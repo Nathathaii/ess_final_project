@@ -37,6 +37,37 @@ const getItemsFromDB = async () => {
         .catch((error) => console.error(error));
 };
 
+//#1.2 display only "tasks list" of a specific student
+const getStudentTasks = async () => {
+    const options = {
+        method: "GET",
+        credentials: "include",
+    };
+    let studentId = "6430204221"; //should change this student_id for different output
+    await fetch(`http://${backendIPAddress}/items/${studentId}/tasks`, options)
+        .then((response) => response.json())
+        .then((data) => {
+            itemData = data;
+        })
+        .catch((error) => console.error(error));
+};
+
+//#1.3 display only "subjects list" of a specific student
+const getStudentSubjects = async () => {
+    const options = {
+        method: "GET",
+        credentials: "include",
+    };
+    let studentId = "6430204221"; //should change this student_id for different output
+    await fetch(`http://${backendIPAddress}/items/${studentId}/subjects`, options)
+        .then((response) => response.json())
+        .then((data) => {
+            itemData = data;
+        })
+        .catch((error) => console.error(error));
+};
+
+
 //show data from calendar
 const showItemsInTable = async () => {
     const itemData = await getStudentTasks();
@@ -91,35 +122,6 @@ const showItemsInTable = async () => {
 
 showItemsInTable();
 
-//#1.2 display only "tasks list" of a specific student
-const getStudentTasks = async () => {
-    const options = {
-        method: "GET",
-        credentials: "include",
-    };
-    let studentId = "6430204221"; //should change this student_id for different output
-    await fetch(`http://${backendIPAddress}/items/${studentId}/tasks`, options)
-        .then((response) => response.json())
-        .then((data) => {
-            itemData = data;
-        })
-        .catch((error) => console.error(error));
-};
-
-//#1.3 display only "subjects list" of a specific student
-const getStudentSubjects = async () => {
-    const options = {
-        method: "GET",
-        credentials: "include",
-    };
-    let studentId = "6430204221"; //should change this student_id for different output
-    await fetch(`http://${backendIPAddress}/items/${studentId}/subjects`, options)
-        .then((response) => response.json())
-        .then((data) => {
-            itemData = data;
-        })
-        .catch((error) => console.error(error));
-};
 //------------------------------------------------------------------
 //# 2. POST
 
